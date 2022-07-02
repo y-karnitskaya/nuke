@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nuke.Common\Nuke.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="data\**\*" />
+    <None Remove="**\bin\**\*;**\obj\**\*" />
+    <Compile Remove="data\**\*.cs" />
+  </ItemGroup>
+
+</Project>

@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuke.SourceGenerators.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Console", "external\spectre.console\src\Spectre.Console\Spectre.Console.csproj", "{63651191-98F4-4AC0-8F45-D12F19431509}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuke.Common.IntegrationTests", "source\Nuke.Common.IntegrationTests\Nuke.Common.IntegrationTests.csproj", "{61BA2DD6-925B-4D21-B27F-88F6B82AE330}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +88,10 @@ Global
 		{63651191-98F4-4AC0-8F45-D12F19431509}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63651191-98F4-4AC0-8F45-D12F19431509}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63651191-98F4-4AC0-8F45-D12F19431509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61BA2DD6-925B-4D21-B27F-88F6B82AE330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61BA2DD6-925B-4D21-B27F-88F6B82AE330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61BA2DD6-925B-4D21-B27F-88F6B82AE330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61BA2DD6-925B-4D21-B27F-88F6B82AE330}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

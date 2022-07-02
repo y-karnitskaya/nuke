@@ -65,6 +65,10 @@
     <ProjectReference Include="..\source\Nuke.SourceGenerators\Nuke.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Directory.Build\source\Nuke.Common.IntegrationTests\data" />
+  </ItemGroup>
+
   <Import Project="..\source\Nuke.Common\Nuke.Common.targets" />
 
 </Project>
