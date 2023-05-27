@@ -13,7 +13,6 @@ namespace Nuke.Common.Tests.Execution;
 
 public class DefaultInterfaceExecutionTest
 {
-    public static string Description = "description";
     public static Action Action = () => { };
     public static Expression<Func<bool>> Requirement = () => true;
     public static Func<bool> StaticCondition = () => true;
@@ -33,7 +32,7 @@ public class DefaultInterfaceExecutionTest
 
         targets.Single(x => x.IsDefault).Should().Be(e);
 
-        a.Description.Should().Be(Description);
+        a.Description.Should().Be("Description");
         a.DelegateRequirements.Should().Equal(Requirement);
         a.Actions.Should().Equal(Action);
         a.AllDependencies.Should().BeEmpty();
@@ -189,14 +188,13 @@ public class DefaultInterfaceExecutionTest
 
     private interface ITestBuild
     {
-        public string Description => DefaultInterfaceExecutionTest.Description;
         public Action Action => DefaultInterfaceExecutionTest.Action;
         public Expression<Func<bool>> Requirement => DefaultInterfaceExecutionTest.Requirement;
         public Func<bool> StaticCondition => DefaultInterfaceExecutionTest.StaticCondition;
         public Func<bool> DynamicCondition => DefaultInterfaceExecutionTest.DynamicCondition;
 
+        /// <summary>Description</summary>
         public Target A => _ => _
-            .Description(Description)
             .Requires(Requirement)
             .Executes(Action);
 

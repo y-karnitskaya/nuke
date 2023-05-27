@@ -27,7 +27,7 @@ public class ExecutableTargetFactoryTest
         targets.Single(x => x.IsDefault).Should().Be(a);
 
         a.Factory.Should().Be(build.A);
-        a.Description.Should().Be(build.Description);
+        a.Description.Should().Be("Description");
         a.DelegateRequirements.Should().Equal(build.Requirement);
         a.Actions.Should().Equal(build.Action);
         a.AllDependencies.Should().BeEmpty();
@@ -53,14 +53,13 @@ public class ExecutableTargetFactoryTest
 
     private class TestBuild : NukeBuild
     {
-        public string Description = "description";
         public Action Action = () => { };
         public Expression<Func<bool>> Requirement = () => true;
         public Func<bool> StaticCondition = () => true;
         public Func<bool> DynamicCondition = () => false;
 
+        /// <summary>Description</summary>
         public Target A => _ => _
-            .Description(Description)
             .Requires(Requirement)
             .Executes(Action);
 
@@ -115,7 +114,8 @@ public class ExecutableTargetFactoryTest
             .Executes(() => { });
 
         Target AbstractSharedTarget { get; }
-        Target ExplicitSharedTarget => _ => _.Description("WRONG");
+        /// <summary>WRONG</summary>
+        Target ExplicitSharedTarget => _ => _;
     }
 
     private class TestBaseBuild : NukeBuild
@@ -135,32 +135,38 @@ public class ExecutableTargetFactoryTest
             .DependsOn(SpecificTarget);
 
         public abstract Target AbstractSharedTarget { get; }
-        Target ITestSharedBuild.ExplicitSharedTarget => _ => _.Description("RIGHT");
+        /// <summary>RIGHT</summary>
+        Target ITestSharedBuild.ExplicitSharedTarget => _ => _;
     }
 
     private interface IAnotherSharedBuild
         : INukeBuild
     {
-        Target ExplicitTargetWithDefault => _ => _.Description("WRONG");
+        /// <summary>WRONG</summary>
+        Target ExplicitTargetWithDefault => _ => _;
         Target ExplicitTargetWithoutDefault { get; }
-        Target TargetWithDefault => _ => _.Description("RIGHT");
+        /// <summary>RIGHT</summary>
+        Target TargetWithDefault => _ => _;
         Target ExplicitTarget => _ => _;
     }
 
     private class TestFinalBuild : TestIntermediateBuild, IAnotherSharedBuild
     {
+        /// <summary>SpecificTarget</summary>
         public override Target SpecificTarget => _ => _
-            .Base()
-            .Description(nameof(SpecificTarget));
+            .Base();
 
+        /// <summary>SharedTarget</summary>
         public override Target SharedTarget => _ => _
-            .Base()
-            .Description(nameof(SharedTarget));
+            .Base();
 
-        public override Target AbstractSharedTarget => _ => _.Description("RIGHT");
+        /// <summary>RIGHT</summary>
+        public override Target AbstractSharedTarget => _ => _;
 
-        Target IAnotherSharedBuild.ExplicitTargetWithDefault => _ => _.Description("RIGHT");
-        Target IAnotherSharedBuild.ExplicitTargetWithoutDefault => _ => _.Description("RIGHT");
+        /// <summary>RIGHT</summary>
+        Target IAnotherSharedBuild.ExplicitTargetWithDefault => _ => _;
+        /// <summary>RIGHT</summary>
+        Target IAnotherSharedBuild.ExplicitTargetWithoutDefault => _ => _;
         Target IAnotherSharedBuild.ExplicitTarget => _ => _;
     }
 }
