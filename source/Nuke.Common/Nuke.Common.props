@@ -3,6 +3,7 @@
 
   <PropertyGroup>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <MSBuildWarningsAsErrors>$(MSBuildWarningsAsErrors);CS8785</MSBuildWarningsAsErrors>
   </PropertyGroup>
 
