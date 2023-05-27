@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using Namotion.Reflection;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
 
@@ -44,7 +45,7 @@ internal static class ExecutableTargetFactory
                        Member = property,
                        Definition = definition,
                        Intercept = definition.Intercept,
-                       Description = definition.Description,
+                       Description = definition.Description ?? property.ToContextualProperty().PropertyInfo.GetXmlDocsSummary(),
                        Factory = factory,
                        IsDefault = defaultTargets.Contains(factory),
                        DynamicConditions = definition.DynamicConditions,

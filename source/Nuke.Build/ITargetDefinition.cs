@@ -21,6 +21,7 @@ public interface ITargetDefinition
     /// <summary>
     ///   Adds a description for this target.
     /// </summary>
+    [Obsolete("Use XML doc comments instead")]
     ITargetDefinition Description(string description);
 
     /// <summary>
