@@ -8,6 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using JetBrains.Annotations;
+using Namotion.Reflection;
 using Nuke.Common.Tooling;
 using Nuke.Common.Utilities;
 using Serilog;
@@ -71,7 +72,7 @@ internal partial class ParameterService
     public static string GetParameterDescription(MemberInfo member)
     {
         var attribute = member.GetCustomAttribute<ParameterAttribute>().NotNull();
-        return attribute.Description?.TrimEnd('.');
+        return (attribute.Description ?? member.ToContextualAccessor().GetXmlDocsSummary()).NullIfEmpty()?.TrimEnd(".");
     }
 
     [CanBeNull]
