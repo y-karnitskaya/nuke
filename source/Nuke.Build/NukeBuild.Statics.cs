@@ -35,44 +35,44 @@ public abstract partial class NukeBuild
     }
 
     /// <summary>
-    /// Gets the full path to the root directory.
+    /// Root directory during build execution.
     /// </summary>
-    [Parameter("Root directory during build execution.", Name = RootDirectoryParameterName)]
+    [Parameter(Name = RootDirectoryParameterName)]
     public static AbsolutePath RootDirectory { get; }
 
     /// <summary>
-    /// Gets the full path to the temporary directory <c>/.nuke/temp</c>.
+    /// Full path to the temporary directory <c>/.nuke/temp</c>.
     /// </summary>
     public static AbsolutePath TemporaryDirectory { get; }
 
     /// <summary>
-    /// Gets the full path to the build assembly file.
+    /// Full path to the build assembly file.
     /// </summary>
     [CanBeNull]
     public static AbsolutePath BuildAssemblyFile { get; }
 
     /// <summary>
-    /// Gets the full path to the build assembly directory.
+    /// Full path to the build assembly directory.
     /// </summary>
     [CanBeNull]
     public static AbsolutePath BuildAssemblyDirectory { get; }
 
     /// <summary>
-    /// Gets the full path to the build project directory, or <c>null</c>
+    /// Full path to the build project directory, or <c>null</c>
     /// </summary>
     [CanBeNull]
     public static AbsolutePath BuildProjectDirectory { get; }
 
     /// <summary>
-    /// Gets the full path to the build project file, or <c>null</c>
+    /// Full path to the build project file, or <c>null</c>
     /// </summary>
     [CanBeNull]
     public static AbsolutePath BuildProjectFile { get; }
 
     /// <summary>
-    /// Gets the logging verbosity during build execution. Default is <see cref="Nuke.Common.Verbosity.Normal"/>.
+    /// Logging verbosity during build execution. Default is <see cref="Nuke.Common.Verbosity.Normal"/>.
     /// </summary>
-    [Parameter("Logging verbosity during build execution. Default is 'Normal'.")]
+    [Parameter]
     public static Verbosity Verbosity
     {
         get => (Verbosity) Logging.Level;
@@ -80,12 +80,15 @@ public abstract partial class NukeBuild
     }
 
     /// <summary>
-    /// Gets the host for execution. Default is <em>automatic</em>.
+    /// Host for execution. Default is <em>automatic</em>.
     /// </summary>
-    [Parameter("Host for execution. Default is 'automatic'.", ValueProviderMember = nameof(HostNames))]
+    [Parameter(ValueProviderMember = nameof(HostNames))]
     public static Host Host { get; set; }
 
-    [Parameter("Defines the profiles to load.", Name = LoadedLocalProfilesParameterName)]
+    /// <summary>
+    /// Profiles (parameter files) to load.
+    /// </summary>
+    [Parameter(Name = LoadedLocalProfilesParameterName)]
     public static string[] LoadedLocalProfiles { get; }
 
     public static bool IsLocalBuild => !IsServerBuild;

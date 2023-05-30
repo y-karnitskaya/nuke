@@ -83,78 +83,81 @@ public abstract partial class NukeBuild : INukeBuild
     public IReadOnlyCollection<ExecutableTarget> ExecutionPlan { get; set; }
 
     /// <summary>
-    /// Gets the list of targets that were invoked.
+    /// List of targets to be invoked. Default is '{default_target}'.
     /// </summary>
-    [Parameter("List of targets to be invoked. Default is '{default_target}'.",
+    [Parameter(
         Name = InvokedTargetsParameterName,
         Separator = TargetsSeparator,
         ValueProviderMember = nameof(TargetNames))]
     public IReadOnlyCollection<ExecutableTarget> InvokedTargets => ExecutionPlan.Where(x => x.Invoked).ToList();
 
     /// <summary>
-    /// Gets the list of targets that are skipped.
+    /// List of targets to be skipped. Empty list skips all dependencies.
     /// </summary>
-    [Parameter("List of targets to be skipped. Empty list skips all dependencies.",
+    [Parameter(
         Name = SkippedTargetsParameterName,
         Separator = TargetsSeparator,
         ValueProviderMember = nameof(TargetNames))]
     public IReadOnlyCollection<ExecutableTarget> SkippedTargets => ExecutionPlan.Where(x => x.Status == ExecutionStatus.Skipped).ToList();
 
     /// <summary>
-    /// Gets the list of targets that are scheduled.
+    /// List of targets that are scheduled.
     /// </summary>
     public IReadOnlyCollection<ExecutableTarget> ScheduledTargets => ExecutionPlan.Where(x => x.Status == ExecutionStatus.Scheduled).ToList();
 
     /// <summary>
-    /// Gets the list of targets that are running.
+    /// List of targets that are running.
     /// </summary>
     public IReadOnlyCollection<ExecutableTarget> RunningTargets => ExecutionPlan.Where(x => x.Status == ExecutionStatus.Running).ToList();
 
     /// <summary>
-    /// Gets the list of targets that were aborted.
+    /// List of targets that were aborted.
     /// </summary>
     public IReadOnlyCollection<ExecutableTarget> AbortedTargets => ExecutionPlan.Where(x => x.Status == ExecutionStatus.Aborted).ToList();
 
     /// <summary>
-    /// Gets the list of targets that have failed.
+    /// List of targets that have failed.
     /// </summary>
     public IReadOnlyCollection<ExecutableTarget> FailedTargets => ExecutionPlan.Where(x => x.Status == ExecutionStatus.Failed).ToList();
 
     /// <summary>
-    /// Gets the list of targets that have succeeded.
+    /// List of targets that have succeeded.
     /// </summary>
     public IReadOnlyCollection<ExecutableTarget> SucceededTargets => ExecutionPlan.Where(x => x.Status == ExecutionStatus.Succeeded).ToList();
 
     /// <summary>
-    /// Gets the list of targets that have been finished (failed or succeeded).
+    /// List of targets that have been finished (failed or succeeded).
     /// </summary>
     public IReadOnlyCollection<ExecutableTarget> FinishedTargets => FailedTargets.Concat(SucceededTargets).ToList();
 
     /// <summary>
-    /// Gets a value whether to show the execution plan (HTML).
+    /// Shows the execution plan (HTML).
     /// </summary>
-    [Parameter("Shows the execution plan (HTML).")]
+    [Parameter]
     public bool Plan { get; }
 
     /// <summary>
-    /// Gets a value whether to show the help text for this build assembly.
+    /// Shows the help text for this build assembly.
     /// </summary>
-    [Parameter("Shows the help text for this build assembly.")]
+    [Parameter]
     public bool Help { get; }
 
     /// <summary>
-    /// Gets a value whether to display the NUKE logo.
+    /// Disables displaying the NUKE logo.
     /// </summary>
-    [Parameter("Disables displaying the NUKE logo.")]
+    [Parameter]
     public bool NoLogo { get; set; }
 
     /// <summary>
-    /// Gets a value whether a previous failed build should be continued.
+    /// Indicates to continue a previously failed build attempt.
     /// </summary>
-    [Parameter("Indicates to continue a previously failed build attempt.")]
+    [Parameter]
     public bool Continue { get; internal set; }
 
-    [Parameter("Partition to use on CI.", List = false)]
+    /// <summary>
+    /// Partition to use on CI.
+    /// </summary>
+    [Parameter(List = false)]
     public Partition Partition { get; internal set; } = Partition.Single;
 
     [CanBeNull]
