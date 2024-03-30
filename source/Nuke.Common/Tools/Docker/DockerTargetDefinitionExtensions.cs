@@ -184,7 +184,7 @@ public static class DockerTargetDefinitionExtensions
                     !x.Key.Contains(' ') &&
                     !x.Key.EqualsAnyOrdinalIgnoreCase(excludedEnvironmentVariables) &&
                     !x.Value.Contains(EnvironmentInfo.NewLine))
-                .ToDictionary(x => x.Key, _ => default(string)).AsReadOnly())
+                .ToDictionary(x => x.Key, _ => default(string)))
             .ToImmutableSortedDictionary();
     }
 }

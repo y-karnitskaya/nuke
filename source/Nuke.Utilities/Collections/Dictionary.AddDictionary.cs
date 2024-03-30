@@ -18,7 +18,7 @@ public static partial class DictionaryExtensions
         return dictionary;
     }
 
-    public static TDictionary AddDictionary<TDictionary, TKey, TValue>(
+    public static TDictionary AddReadOnlyDictionary<TDictionary, TKey, TValue>(
         this TDictionary dictionary,
         IReadOnlyDictionary<TKey, TValue> otherDictionary)
         where TDictionary : IDictionary<TKey, TValue>

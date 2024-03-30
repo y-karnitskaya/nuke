@@ -42,7 +42,11 @@ public class LookupTable<TKey, TValue> : ILookup<TKey, TValue>
 
     public int Count => Lookup.Count;
 
-    public IEnumerable<TValue> this[[NotNull] TKey key] => Lookup[key];
+    public IEnumerable<TValue> this[[NotNull] TKey key]
+    {
+        get => _dictionary[key];
+        set => _dictionary[key] = value.ToList();
+    }
 
     public void Add(TKey key, TValue value)
     {

@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <LangVersion>preview</LangVersion>
+    <EnablePreviewFeatures>true</EnablePreviewFeatures>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <NoWarn>CS1591;NU5129;NU5118;SYSLIB0050;SYSLIB0051</NoWarn>
     <DefineConstants>$(DefineConstants);JETBRAINS_ANNOTATIONS</DefineConstants>
