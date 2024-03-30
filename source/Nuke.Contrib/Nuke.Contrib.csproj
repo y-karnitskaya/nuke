@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Nuke.Contrib.Tools</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nuke.Build\Nuke.Build.csproj" />
+    <ProjectReference Include="..\Nuke.Tooling\Nuke.Tooling.csproj"/>
+    <ProjectReference Include="..\Nuke.Utilities\Nuke.Utilities.csproj"/>
+  </ItemGroup>
+
+</Project>

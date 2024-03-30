@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Nuke.Build.Tests")]
 [assembly: InternalsVisibleTo("Nuke.Common")]
 [assembly: InternalsVisibleTo("Nuke.Common.Tests")]
+[assembly: InternalsVisibleTo("Nuke.Contrib")]
 [assembly: InternalsVisibleTo("Nuke.GlobalTool")]
 [assembly: InternalsVisibleTo("Nuke.GlobalTool.Tests")]
 [assembly: InternalsVisibleTo("Nuke.ProjectModel.Tests")]

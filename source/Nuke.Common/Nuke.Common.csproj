@@ -5,13 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="CI\TeamCity\Configuration\pom.xml" />
-    <!--<None Remove="execution-plan.html" />-->
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Nuke.Build\Nuke.Build.csproj" />
     <ProjectReference Include="..\Nuke.Build.Shared\Nuke.Build.Shared.csproj" />
+    <ProjectReference Include="..\Nuke.Contrib\Nuke.Contrib.csproj" />
     <ProjectReference Include="..\Nuke.ProjectModel\Nuke.ProjectModel.csproj" />
     <ProjectReference Include="..\Nuke.SolutionModel\Nuke.SolutionModel.csproj" />
     <ProjectReference Include="..\Nuke.Tooling\Nuke.Tooling.csproj" />
