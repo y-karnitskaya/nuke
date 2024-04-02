@@ -302,9 +302,6 @@ public class TeamCityAttribute : ChainedConfigurationAttributeBase
                    Description = attribute.Description,
                    Options = valueSet?.ToDictionary(x => x.Item1, x => x.Item2),
                    Type = GetParameterType(),
-                   DefaultValue = memberType.IsArray && defaultValue is IEnumerable enumerable
-                       ? enumerable.Cast<object>().Select(x => x.ToString()).Join(valueSeparator)
-                       : defaultValue?.ToString(),
                    Display = required ? TeamCityParameterDisplay.Prompt : TeamCityParameterDisplay.Normal,
                    AllowMultiple = memberType.IsArray && valueSet is not null,
                    ValueSeparator = valueSeparator

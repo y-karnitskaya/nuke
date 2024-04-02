@@ -33,7 +33,8 @@ public class TeamCityConfigurationParameter : TeamCityParameter
             if (Description != null)
                 writer.WriteLine($"description = {Description.DoubleQuote()},");
 
-            writer.WriteLine($"value = {DefaultValue.DoubleQuote()},");
+            if (DefaultValue != null)
+                writer.WriteLine($"value = {DefaultValue.DoubleQuote()},");
 
             if (Type == TeamCityParameterType.Checkbox)
             {

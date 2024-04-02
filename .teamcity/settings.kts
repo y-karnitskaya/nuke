@@ -37,47 +37,40 @@ project {
         checkbox (
             "env.AutoStash",
             label = "AutoStash",
-            value = "True",
             checked = "True",
             unchecked = "False",
             display = ParameterDisplay.NORMAL)
         select (
             "env.Configuration",
             label = "Configuration",
-            value = "Release",
             options = listOf("Debug" to "Debug", "Release" to "Release"),
             display = ParameterDisplay.NORMAL)
         checkbox (
             "env.IgnoreFailedSources",
             label = "IgnoreFailedSources",
             description = "Ignore unreachable sources during Restore",
-            value = "False",
             checked = "True",
             unchecked = "False",
             display = ParameterDisplay.NORMAL)
         checkbox (
             "env.Major",
             label = "Major",
-            value = "False",
             checked = "True",
             unchecked = "False",
             display = ParameterDisplay.NORMAL)
         text (
             "env.SignPathSettings",
             label = "SignPathSettings",
-            value = "",
             allowEmpty = true,
             display = ParameterDisplay.NORMAL)
         text (
             "env.TestDegreeOfParallelism",
             label = "TestDegreeOfParallelism",
-            value = "1",
             allowEmpty = true,
             display = ParameterDisplay.NORMAL)
         checkbox (
             "env.UseHttps",
             label = "UseHttps",
-            value = "False",
             checked = "True",
             unchecked = "False",
             display = ParameterDisplay.NORMAL)
@@ -85,7 +78,6 @@ project {
             "env.Verbosity",
             label = "Verbosity",
             description = "Logging verbosity during build execution. Default is 'Normal'.",
-            value = "Normal",
             options = listOf("Minimal" to "Minimal", "Normal" to "Normal", "Quiet" to "Quiet", "Verbose" to "Verbose"),
             display = ParameterDisplay.NORMAL)
         text(
